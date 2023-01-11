@@ -16,10 +16,10 @@ interface IProps {
 }
 
 const CategoriesScreen = ({ navigation }: IProps) => {
-  function pressCategoryHandler() {
-    navigation.navigate("MealsOverview");
-  }
   const renderCategoriesItem = ({ item }: ICategoriesData) => {
+    function pressCategoryHandler() {
+      navigation.navigate("MealsOverview", { categoryId: item.id });
+    }
     return (
       <CategoryGridTile
         title={item.title}
