@@ -1,26 +1,41 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  ImageSourcePropType,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 interface IProps {
   title: string;
   color: string;
-  onPress:()=>void
+  onPress: () => void;
+  imageSrc: ImageSourcePropType;
 }
 
-const CategoryGridTile = ({ title, color,onPress }: IProps) => {
+const CategoryGridTile = ({ title, color, onPress, imageSrc }: IProps) => {
   return (
     <View style={styles.gridItem}>
-      <Pressable
-        android_ripple={{ color: "#ccc" }}
-        style={({ pressed }) => [
-          styles.button,
-          pressed ? styles.buttonPressed : null,
-        ]}
-        onPress={onPress}
+      <ImageBackground
+        source={imageSrc}
+        resizeMode="cover"
+        style={{ flex: 1 }}
+        imageStyle={{ opacity: 0.35 }}
       >
-        <View style={[styles.innerContainer,{backgroundColor:color}]}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-      </Pressable>
+        <Pressable
+          android_ripple={{ color: "#ccc" }}
+          style={({ pressed }) => [
+            styles.button,
+            pressed ? styles.buttonPressed : null,
+          ]}
+          onPress={onPress}
+        >
+          <View style={[styles.innerContainer]}>
+            <Text style={styles.title}>{title}</Text>
+          </View>
+        </Pressable>
+      </ImageBackground>
     </View>
   );
 };

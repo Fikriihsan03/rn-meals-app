@@ -1,5 +1,5 @@
 import { NavigationProp } from "@react-navigation/native";
-import { FlatList, View } from "react-native";
+import { FlatList, ImageSourcePropType, View } from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
 import { CATEGORIES } from "../data/dummy-data";
 
@@ -8,6 +8,7 @@ interface ICategoriesData {
     id: string;
     title: string;
     color: string;
+    imageSrc:any;
   };
 }
 
@@ -24,6 +25,7 @@ const CategoriesScreen = ({ navigation }: IProps) => {
       <CategoryGridTile
         title={item.title}
         color={item.color}
+        imageSrc={item.imageSrc}
         onPress={pressCategoryHandler}
       />
     );
