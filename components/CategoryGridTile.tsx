@@ -21,7 +21,7 @@ const CategoryGridTile = ({ title, color, onPress, imageSrc }: IProps) => {
         source={imageSrc}
         resizeMode="cover"
         style={{ flex: 1 }}
-        imageStyle={{ opacity: 0.35 }}
+        imageStyle={{ opacity: 0.15 }}
       >
         <Pressable
           android_ripple={{ color: "#ccc" }}
