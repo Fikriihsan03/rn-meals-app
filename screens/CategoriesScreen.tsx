@@ -3,7 +3,7 @@ import { FlatList, ImageSourcePropType, View } from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
 import { CATEGORIES } from "../data/dummy-data";
 
-interface ICategoriesData {
+export interface ICategoriesData {
   item: {
     id: string;
     title: string;
