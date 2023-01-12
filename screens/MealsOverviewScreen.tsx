@@ -33,7 +33,14 @@ const MealsOverviewScreen = ({ route }: IProps) => {
   );
   // console.log(filteredMeals)
   const renderMealItem = ({ item }: IMealsData) => {
-    return <MealItem title={item.title}/>;
+    const mealItemProps={
+      title:item.title,
+      imageUrl:item.imageUrl,
+      duration:item.duration,
+      complexity:item.complexity,
+      affordability:item.affordability,
+    }
+    return <MealItem {...mealItemProps}/>;
   };
   return (
     <View style={styles.container}>
@@ -41,6 +48,8 @@ const MealsOverviewScreen = ({ route }: IProps) => {
         data={getMealsByCategory}
         keyExtractor={(item) => item.id}
         renderItem={renderMealItem}
+        showsVerticalScrollIndicator ={false}
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
