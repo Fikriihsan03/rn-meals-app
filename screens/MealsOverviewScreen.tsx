@@ -1,7 +1,8 @@
 import { NavigationProp, RouteProp } from "@react-navigation/native";
+import { useLayoutEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import MealItem from "../components/MealITem";
-import { MEALS } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 
 interface IProps {
   navigation: NavigationProp<any, any>;
@@ -26,21 +27,29 @@ export interface IMealsData {
   };
 }
 
-const MealsOverviewScreen = ({ route }: IProps) => {
+const MealsOverviewScreen = ({ navigation, route }: IProps) => {
   const categoryId = route.params?.categoryId;
   const getMealsByCategory = MEALS.filter((item) =>
     item.categoryIds.includes(categoryId)
   );
-  // console.log(filteredMeals)
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find(
+      (category) => category.id === categoryId
+    )?.title;
+    navigation.setOptions({
+      title: categoryTitle,
+    });
+  }, [navigation, categoryId]);
+
   const renderMealItem = ({ item }: IMealsData) => {
-    const mealItemProps={
-      title:item.title,
-      imageUrl:item.imageUrl,
-      duration:item.duration,
-      complexity:item.complexity,
-      affordability:item.affordability,
-    }
-    return <MealItem {...mealItemProps}/>;
+    const mealItemProps = {
+      title: item.title,
+      imageUrl: item.imageUrl,
+      duration: item.duration,
+      complexity: item.complexity,
+      affordability: item.affordability,
+    };
+    return <MealItem {...mealItemProps} />;
   };
   return (
     <View style={styles.container}>
@@ -48,7 +57,7 @@ const MealsOverviewScreen = ({ route }: IProps) => {
         data={getMealsByCategory}
         keyExtractor={(item) => item.id}
         renderItem={renderMealItem}
-        showsVerticalScrollIndicator ={false}
+        showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
     </View>

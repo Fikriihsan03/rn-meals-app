@@ -8,7 +8,7 @@ export interface ICategoriesData {
     id: string;
     title: string;
     color: string;
-    imageSrc:any;
+    imageSrc: any;
   };
 }
 
