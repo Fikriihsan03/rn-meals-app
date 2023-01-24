@@ -1,17 +1,18 @@
-import {
-  NavigationContainer,
-} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
+
 import CategoriesScreen from "./screens/CategoriesScreen";
+import MealsDetailsScreen from "./screens/MealDetailsScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 
-type RootStackParamList = {
+export type RootStackParamList = {
   MealsCategories: undefined;
   MealsOverview: { categoryId: string };
+  MealDetails: { mealId: string };
 };
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
@@ -32,10 +33,8 @@ export default function App() {
             name="MealsCategories"
             component={CategoriesScreen}
           />
-          <Stack.Screen
-            name="MealsOverview"
-            component={MealsOverviewScreen}
-          />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+          <Stack.Screen name="MealDetails" component={MealsDetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
