@@ -1,7 +1,7 @@
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import MealItem from "../components/MealITem";
+import MealItem from "../components/MealItem";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 
 interface IProps {
