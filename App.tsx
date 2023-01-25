@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
+import { Colors } from "./components/constants/Colors";
 
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsDetailsScreen from "./screens/MealDetailsScreen";
@@ -16,13 +17,13 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            headerStyle: { backgroundColor: "#674188" },
-            headerTintColor: "white",
-            contentStyle: { backgroundColor: "#C3ACD0" },
+            headerStyle: { backgroundColor: Colors.primary700 },
+            headerTintColor: Colors.accent500,
+            contentStyle: { backgroundColor: Colors.primary600 },
           }}
           initialRouteName="MealsCategories"
         >
