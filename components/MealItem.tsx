@@ -43,6 +43,7 @@ const MealItem = ({
             duration={duration}
             complexity={complexity}
             affordability={affordability}
+            textStyle={styles.descriptionText}
           />
         </View>
       </Pressable>
@@ -78,7 +79,11 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     textAlign: "center",
+    color:Colors.primary700,
     fontSize: 18,
     margin: 8,
   },
+  descriptionText:{
+    color:Colors.primary700
+  }
 });
