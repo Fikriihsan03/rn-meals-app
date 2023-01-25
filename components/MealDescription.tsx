@@ -4,14 +4,26 @@ interface IProps {
   duration: number;
   complexity: string;
   affordability: string;
+  style?: object;
+  textStyle?: object;
 }
 
-const MealDescription = ({ duration, complexity, affordability }: IProps) => {
+const MealDescription = ({
+  duration,
+  complexity,
+  affordability,
+  style,
+  textStyle,
+}: IProps) => {
   return (
-    <View style={styles.mealDetail}>
-      <Text style={styles.mealDetailText}>{duration}m</Text>
-      <Text style={styles.mealDetailText}>{complexity.toUpperCase()}</Text>
-      <Text style={styles.mealDetailText}>{affordability.toUpperCase()}</Text>
+    <View style={[styles.mealDetail, style]}>
+      <Text style={[styles.mealDetailText, textStyle]}>{duration}m</Text>
+      <Text style={[styles.mealDetailText, textStyle]}>
+        {complexity.toUpperCase()}
+      </Text>
+      <Text style={[styles.mealDetailText, textStyle]}>
+        {affordability.toUpperCase()}
+      </Text>
     </View>
   );
 };
