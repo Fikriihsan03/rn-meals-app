@@ -1,6 +1,8 @@
 import { NavigationProp, RouteProp } from "@react-navigation/native";
+import { useLayoutEffect } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../components/constants/Colors";
+import IconButton from "../components/IconButton";
 import MealDescription from "../components/MealDescription";
 import MealDetailsListItem from "../components/MealDetailsListItem";
 import { MEALS } from "../data/dummy-data";
@@ -13,6 +15,22 @@ interface IProps {
 const MealDetailsScreen = ({ navigation, route }: IProps) => {
   const mealId = route.params?.mealId;
   const getMealDetail = MEALS.find((meal) => meal.id === mealId);
+  const headerButtonPressHandler = () => {
+    return;
+  };
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return (
+          <IconButton
+            ionIconsName="star"
+            color={Colors.accent500}
+            onPress={headerButtonPressHandler}
+          />
+        );
+      },
+    });
+  }, []);
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -39,8 +57,8 @@ const MealDetailsScreen = ({ navigation, route }: IProps) => {
 export default MealDetailsScreen;
 
 const styles = StyleSheet.create({
-  rootContainer:{
-    marginBottom:12
+  rootContainer: {
+    marginBottom: 12,
   },
   image: {
     width: "100%",
