@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { Colors } from "./constants/Colors";
 
 interface IProps {
   title: string;
@@ -17,12 +18,6 @@ interface IProps {
 const CategoryGridTile = ({ title, color, onPress, imageSrc }: IProps) => {
   return (
     <View style={styles.gridItem}>
-      <ImageBackground
-        source={imageSrc}
-        resizeMode="cover"
-        style={{ flex: 1 }}
-        imageStyle={{ opacity: 0.15 }}
-      >
         <Pressable
           android_ripple={{ color: "#ccc" }}
           style={({ pressed }) => [
@@ -35,7 +30,6 @@ const CategoryGridTile = ({ title, color, onPress, imageSrc }: IProps) => {
             <Text style={styles.title}>{title}</Text>
           </View>
         </Pressable>
-      </ImageBackground>
     </View>
   );
 };
@@ -51,16 +45,17 @@ const styles = StyleSheet.create({
     elevation: 4,
     backgroundColor: "white",
     shadowColor: "black",
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.65,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
     overflow: "hidden",
   },
   button: {
     flex: 1,
+    backgroundColor:Colors.primary500
   },
   buttonPressed: {
-    opacity: 0.25,
+    opacity: 0.65,
   },
   innerContainer: {
     flex: 1,
@@ -72,5 +67,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
+    color:Colors.primary700
   },
 });
