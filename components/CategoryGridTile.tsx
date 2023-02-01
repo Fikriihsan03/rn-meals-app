@@ -1,6 +1,4 @@
 import {
-  ImageBackground,
-  ImageSourcePropType,
   Pressable,
   StyleSheet,
   Text,
@@ -10,26 +8,24 @@ import { Colors } from "./constants/Colors";
 
 interface IProps {
   title: string;
-  color: string;
   onPress: () => void;
-  imageSrc: ImageSourcePropType;
 }
 
-const CategoryGridTile = ({ title, color, onPress, imageSrc }: IProps) => {
+const CategoryGridTile = ({ title, onPress }: IProps) => {
   return (
     <View style={styles.gridItem}>
-        <Pressable
-          android_ripple={{ color: "#ccc" }}
-          style={({ pressed }) => [
-            styles.button,
-            pressed ? styles.buttonPressed : null,
-          ]}
-          onPress={onPress}
-        >
-          <View style={[styles.innerContainer]}>
-            <Text style={styles.title}>{title}</Text>
-          </View>
-        </Pressable>
+      <Pressable
+        android_ripple={{ color: "#ccc" }}
+        style={({ pressed }) => [
+          styles.button,
+          pressed ? styles.buttonPressed : null,
+        ]}
+        onPress={onPress}
+      >
+        <View style={[styles.innerContainer]}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+      </Pressable>
     </View>
   );
 };
@@ -52,7 +48,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor:Colors.primary500
+    backgroundColor: Colors.primary500,
   },
   buttonPressed: {
     opacity: 0.65,
@@ -67,6 +63,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
-    color:Colors.primary700
+    color: Colors.primary700,
   },
 });
