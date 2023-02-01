@@ -1,5 +1,5 @@
 import { NavigationProp } from "@react-navigation/native";
-import { FlatList, ImageSourcePropType, View } from "react-native";
+import { FlatList, View } from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
 import { CATEGORIES } from "../data/dummy-data";
 
@@ -8,7 +8,6 @@ export interface ICategoriesData {
     id: string;
     title: string;
     color: string;
-    imageSrc: any;
   };
 }
 
@@ -22,12 +21,7 @@ const CategoriesScreen = ({ navigation }: IProps) => {
       navigation.navigate("MealsOverview", { categoryId: item.id });
     }
     return (
-      <CategoryGridTile
-        title={item.title}
-        color={item.color}
-        imageSrc={item.imageSrc}
-        onPress={pressCategoryHandler}
-      />
+      <CategoryGridTile title={item.title} onPress={pressCategoryHandler} />
     );
   };
   return (
