@@ -1,12 +1,5 @@
 class Category {
-  id: string;
-  title: string;
-  color: string;
-  constructor(id: string, title: string, color: string) {
-    this.id = id;
-    this.title = title;
-    this.color = color;
-  }
+  constructor(public id: string, public title: string, public color: string) {}
 }
 
 export default Category;
